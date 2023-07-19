@@ -8,28 +8,6 @@ SELECT name, escape_attempts FROM animals WHERE weight_kg > 10.5;
 SELECT * FROM animals WHERE neutered = TRUE;
 SELECT * FROM animals WHERE name <> 'Gabumon';
 SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
-BEGIN;
-UPDATE animals SET species = 'unspecified';
-SELECT * FROM animals;
-ROLLBACK;
-SELECT * FROM animals;
-BEGIN;
-UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
-UPDATE animals SET species = 'pokemon' WHERE species IS NULL;
-SELECT * FROM animals;
-COMMIT;
-SELECT * FROM animals;
-BEGIN;
-DELETE FROM animals;
-ROLLBACK;
-SELECT * FROM animals;
-BEGIN;
-DELETE FROM animals WHERE date_of_birth > '2022-01-01';
-SAVEPOINT SP1;
-UPDATE animals SET weight_kg = weight_kg * -1;
-ROLLBACK TO SP1;
-UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
-COMMIT;
 SELECT COUNT(*) FROM animals;
 SELECT COUNT(escape_attempts) FROM animals WHERE escape_attempts = 0;
 SELECT AVG(weight_kg) FROM animals;
@@ -39,3 +17,35 @@ FROM animals GROUP BY species;
 SELECT species, AVG(escape_attempts) FROM animals
 WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31'
 GROUP BY species;
+
+SELECT name AS Melody_animals FROM animals A 
+JOIN owners O  ON A.owner_id  = O.id
+WHERE O.full_name LIKE 'Melody Pond';
+
+SELECT A.name AS Pokeman_animals FROM animals A 
+JOIN species S ON A.species_id = S.id
+WHERE S.name LIKE 'Pokemon';
+
+SELECT full_name AS owner, name AS animal_name 
+FROM animals A 
+FULL JOIN owners O  ON A.owner_id  = O.id;
+
+SELECT S.name AS species, COUNT(*) FROM animals A 
+JOIN species S ON A.species_id = S.id
+GROUP BY S.name;
+
+SELECT A.name AS Digimon_animals FROM animals A 
+LEFT JOIN owners O  ON A.owner_id  = O.id
+LEFT JOIN species S ON A.species_id = S.id
+WHERE O.full_name LIKE 'Jennifer Orwell' 
+AND S.name LIKE 'Digimon';
+
+SELECT name FROM animals A 
+LEFT JOIN owners O  ON A.owner_id  = O.id
+WHERE O.full_name LIKE 'Dean Winchester' 
+AND A.escape_attempts = 0;
+
+SELECT O.full_name, COUNT(A.name) FROM animals A 
+JOIN owners O  ON A.owner_id  = O.id
+GROUP BY O.full_name ORDER BY COUNT(A.name)
+DESC LIMIT 1;
