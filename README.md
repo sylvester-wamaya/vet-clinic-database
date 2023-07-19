@@ -55,7 +55,12 @@
 
 
 - **Added animals table**
-- **Added data of animals to the animals table**
+- **Added species table**
+- **Added owners table**
+- **Added data into animals table**
+- **Added data into owners table**
+- **Added data into species table**
+- **Added foreign keys into sthe 3 tables**
 - **Added queries**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
