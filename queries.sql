@@ -18,3 +18,34 @@ SELECT species, AVG(escape_attempts) FROM animals
 WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31'
 GROUP BY species;
 
+SELECT name AS Melody_animals FROM animals A 
+JOIN owners O  ON A.owner_id  = O.id
+WHERE O.full_name LIKE 'Melody Pond';
+
+SELECT A.name AS Pokeman_animals FROM animals A 
+JOIN species S ON A.species_id = S.id
+WHERE S.name LIKE 'Pokemon';
+
+SELECT full_name AS owner, name AS animal_name 
+FROM animals A 
+FULL JOIN owners O  ON A.owner_id  = O.id;
+
+SELECT S.name AS species, COUNT(*) FROM animals A 
+JOIN species S ON A.species_id = S.id
+GROUP BY S.name;
+
+SELECT A.name AS Digimon_animals FROM animals A 
+LEFT JOIN owners O  ON A.owner_id  = O.id
+LEFT JOIN species S ON A.species_id = S.id
+WHERE O.full_name LIKE 'Jennifer Orwell' 
+AND S.name LIKE 'Digimon';
+
+SELECT name FROM animals A 
+LEFT JOIN owners O  ON A.owner_id  = O.id
+WHERE O.full_name LIKE 'Dean Winchester' 
+AND A.escape_attempts = 0;
+
+SELECT O.full_name, COUNT(A.name) FROM animals A 
+JOIN owners O  ON A.owner_id  = O.id
+GROUP BY O.full_name ORDER BY COUNT(A.name)
+DESC LIMIT 1;
