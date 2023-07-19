@@ -41,3 +41,13 @@ WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31'
 GROUP BY species;
 UPDATE animals SET species_id = 2 WHERE name LIKE '%mon';
 UPDATE animals SET species_id = 1 WHERE species_id IS NULL;
+
+UPDATE animals 
+SET owner_id = 
+    CASE 
+        WHEN name LIKE 'Agumon' THEN 1 
+        WHEN name LIKE 'Gabumon' OR name LIKE 'Pikachu' THEN 2
+        WHEN name LIKE 'Devimon' OR name LIKE 'Plantmon' THEN 3
+        WHEN name LIKE 'Charmander' OR name LIKE 'Squirtle' OR name LIKE 'Blossom' THEN 4
+        WHEN name LIKE 'Angemon' OR name LIKE 'Boarmon' THEN 5 
+    END;
