@@ -62,6 +62,8 @@
 - **Added data into species table**
 - **Added foreign keys into sthe 3 tables**
 - **Added queries**
+- **Added vets table**
+- **Added joiner tables for many to many relationships**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
