@@ -54,7 +54,7 @@ SELECT A.name  FROM animals A
 JOIN visits V ON A.id = V.animals_id 
 JOIN vets T ON V.vets_id = T.id
 WHERE T.name LIKE 'William Tatcher'
-ORDER BY V.date_of_visit ASC LIMIT 1;
+ORDER BY V.date_of_visit DESC LIMIT 1;
 
 SELECT COUNT(A.name)  FROM animals A
 JOIN visits V ON A.id = V.animals_id 
