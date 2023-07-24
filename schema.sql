@@ -60,5 +60,7 @@ CREATE TABLE visits (
     );
 
 -- Add an email column to your owners table
-ALTER TABLE owners ADD COLUMN email VARCHAR(120);    
+ALTER TABLE owners ADD COLUMN email VARCHAR(120); 
+
+CREATE INDEX animal_id on visits (animals_id);
     
