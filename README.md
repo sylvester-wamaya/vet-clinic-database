@@ -37,7 +37,8 @@
 
 **Vet Clinic** is a database of animals, contains a single table that has data about the names and other details of the animals.
 
-## ER Diagram
+## The Enity Relationship database diagram
+
 ![Schema Diagram](image.png)
 
 ## 🛠 Built With <a name="built-with"></a>
