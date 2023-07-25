@@ -97,3 +97,6 @@ JOIN animals A ON A.id = V.animals_id
 JOIN species S ON A.species_id = S.id
 WHERE T.name LIKE 'Maisy Smith' GROUP BY S.name
 ORDER BY COUNT(S.name) DESC LIMIT 1;
+
+SELECT COUNT(*) FROM visits where animal_id = 4;
+EXPLAIN ANALYZE SELECT * FROM temp_visits;
